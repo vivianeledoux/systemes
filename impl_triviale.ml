@@ -15,7 +15,6 @@ let new_channel () =
 
 let rec put v c () =
   Unix.lockf c F_LOCK 0;
-  print_int 9; print_endline "";
   let b = Marshal.to_bytes v [] in
   let l = Bytes.length b in
   let lb = Bytes.make 1 (Char.chr l) in
