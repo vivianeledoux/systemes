@@ -43,7 +43,7 @@ let rec doco l () =
   | h::t -> begin
       match Unix.fork () with
       | 0 -> doco t () 
-      | _ -> begin print_int 1; print_endline ""; h (); print_int 2; let _ = Unix.wait () in print_int 3; print_endline "";  end
+      | _ -> begin h (); let _ = Unix.wait () in ();  end
       end
 
 let return v = (fun () -> v)
